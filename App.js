@@ -9,6 +9,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import CatalogScreen from "./src/screens/CatalogScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ProductScreen from "./src/screens/ProductScreen";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -38,6 +39,10 @@ export default function App() {
             name="Home"
             component={TabsNavigator}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Product"
+            component={ProductScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

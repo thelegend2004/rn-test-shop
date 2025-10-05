@@ -19,9 +19,18 @@ export default function CatalogScreen({ navigation }) {
         onChangeText={setQuery}
         style={{ padding: 8, borderBottomWidth: 1 }}
       />
-      <FlatList data={list} keyExtractor={i => i.id.toString()} renderItem={({item}) => (
-        <ProductCard item={item} onPress={() => {}}/>
-      )}/>
+      <FlatList
+        data={list}
+        keyExtractor={(i) => i.id.toString()}
+        renderItem={({ item }) => (
+          <ProductCard
+            item={item}
+            onPress={() => {
+              navigation.navigate("Product", { item });
+            }}
+          />
+        )}
+      />
     </View>
   );
 }
