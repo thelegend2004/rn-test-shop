@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { ActivityIndicator, Button, Text, View } from "react-native";
+import { ThemedView, ThemedText } from "../components/Themed";
+import { ActivityIndicator, Button } from "react-native";
 import { WebView } from "react-native-webview";
 
 export default function BrowserScreen({ navigation }) {
@@ -8,10 +9,10 @@ export default function BrowserScreen({ navigation }) {
   const [error, setError] = useState(false);
 
   return (
-    <View style={{flex: 0.75}}>
+    <ThemedView style={{ flex: 0.75 }}>
       {error ? (
-        <View>
-          <Text>Не удалось загрузить веб-страницу</Text>
+        <ThemedView>
+          <ThemedText>Не удалось загрузить веб-страницу</ThemedText>
           <Button
             title="Повторить"
             onPress={() => {
@@ -19,7 +20,7 @@ export default function BrowserScreen({ navigation }) {
               webRef.current.reload();
             }}
           />
-        </View>
+        </ThemedView>
       ) : (
         <>
           {progress < 1 && <ActivityIndicator />}
@@ -32,7 +33,7 @@ export default function BrowserScreen({ navigation }) {
             onError={() => setError(true)}
             style={{ flex: 1 }}
           />
-          <View
+          <ThemedView
             style={{
               flexDirection: "row",
               justifyContent: "space-around",
@@ -52,9 +53,9 @@ export default function BrowserScreen({ navigation }) {
               onPress={() => webRef.current && webRef.current.reload()}
             />
             <Button title="Закрыть" onPress={() => navigation.goBack()} />
-          </View>
+          </ThemedView>
         </>
       )}
-    </View>
+    </ThemedView>
   );
 }

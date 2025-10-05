@@ -1,7 +1,8 @@
 import { useState } from "react";
 import useStore from "../store/useStore";
+import { ThemedView, ThemedText, ThemedTextInput } from "../components/Themed";
 import ProductCard from "../components/ProductCard";
-import { Button, FlatList, Text, TextInput, View } from "react-native";
+import { Button, FlatList } from "react-native";
 
 export default function FavoritesScreen({ navigation }) {
   const fav = useStore((s) => s.favorites);
@@ -14,14 +15,14 @@ export default function FavoritesScreen({ navigation }) {
 
   if (fav.length === 0)
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Пусто</Text>
-      </View>
+      <ThemedView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ThemedText>Пусто</ThemedText>
+      </ThemedView>
     );
 
   return (
-    <View>
-      <TextInput
+    <ThemedView>
+      <ThemedTextInput
         placeholder="Поиск в избранном"
         value={query}
         onChangeText={setQuery}
@@ -31,7 +32,7 @@ export default function FavoritesScreen({ navigation }) {
         data={list}
         keyExtractor={(i) => i.id.toString()}
         renderItem={({ item }) => (
-          <View>
+          <ThemedView>
             <ProductCard
               item={item}
               onPress={() => navigation.navigate("Product", { item })}
@@ -40,9 +41,9 @@ export default function FavoritesScreen({ navigation }) {
               title="Удалить из избранного"
               onPress={() => removeFavorite(item.id)}
             />
-          </View>
+          </ThemedView>
         )}
       />
-    </View>
+    </ThemedView>
   );
 }

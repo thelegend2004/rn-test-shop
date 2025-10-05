@@ -1,4 +1,5 @@
-import { View, FlatList, Text, Button } from "react-native";
+import { ThemedView, ThemedText } from "../components/Themed";
+import { FlatList, Button } from "react-native";
 import useStore from "../store/useStore";
 
 export default function CartScreen() {
@@ -8,17 +9,17 @@ export default function CartScreen() {
   const total = cart.reduce((sum, i) => sum + i.product.price * i.qty, 0);
 
   return (
-    <View style={{ flex: 1 }}>
+    <ThemedView style={{ flex: 1 }}>
       <FlatList
         data={cart}
         keyExtractor={(i) => i.id.toString()}
         renderItem={({ item }) => (
-          <View style={{ padding: 12, borderBottomWidth: 1 }}>
-            <Text>{item.product.name}</Text>
-            <Text>
+          <ThemedView style={{ padding: 12, borderBottomWidth: 1 }}>
+            <ThemedText>{item.product.name}</ThemedText>
+            <ThemedText>
               {item.product.price} грн | {item.qty} штк.
-            </Text>
-            <View style={{ flexDirection: "row", gap: 8 }}>
+            </ThemedText>
+            <ThemedView style={{ flexDirection: "row", gap: 8 }}>
               <Button
                 title="-"
                 onPress={() => updateQty(item.product.id, item.qty - 1)}
@@ -27,16 +28,18 @@ export default function CartScreen() {
                 title="+"
                 onPress={() => updateQty(item.product.id, item.qty + 1)}
               />
-            </View>
-          </View>
+            </ThemedView>
+          </ThemedView>
         )}
-        ListEmptyComponent={<Text style={{ padding: 16 }}>Пустая корзина</Text>}
+        ListEmptyComponent={
+          <ThemedText style={{ padding: 16 }}>Пустая корзина</ThemedText>
+        }
       />
 
-      <View style={{padding: 12}}>
-        <Text>Итого: {total} грн</Text>
-        <Button title="Очистить корзину" onPress={clearCart}/>
-      </View>
-    </View>
+      <ThemedView style={{ padding: 12 }}>
+        <ThemedText>Итого: {total} грн</ThemedText>
+        <Button title="Очистить корзину" onPress={clearCart} />
+      </ThemedView>
+    </ThemedView>
   );
 }

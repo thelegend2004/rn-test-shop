@@ -13,6 +13,7 @@ import ProductScreen from "./src/screens/ProductScreen";
 import FavoritesScreen from "./src/screens/FavoritesScreen";
 import CartScreen from "./src/screens/CartScreen";
 import BrowserScreen from "./src/screens/BrowserScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -23,6 +24,7 @@ function TabsNavigator() {
       <Tabs.Screen name="Каталог" component={CatalogScreen} />
       <Tabs.Screen name="Избранное" component={FavoritesScreen} />
       <Tabs.Screen name="Корзина" component={CartScreen} />
+      <Tabs.Screen name="Настройки" component={SettingsScreen} />
     </Tabs.Navigator>
   );
 }

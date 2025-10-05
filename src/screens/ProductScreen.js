@@ -1,4 +1,5 @@
-import { Text, View, Button } from "react-native";
+import { ThemedView, ThemedText } from "../components/Themed";
+import { Button } from "react-native";
 import useStore from "../store/useStore";
 
 export default function ProductScreen({ route }) {
@@ -7,13 +8,13 @@ export default function ProductScreen({ route }) {
   const addToCart = useStore((s) => s.addToCart);
 
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      <Text style={{ fontSize: 22, fontWeight: "700" }}>{item.name}</Text>
-      <Text>{item.description}</Text>
-      <Text>{item.price} грн</Text>
+    <ThemedView style={{ flex: 1, padding: 16 }}>
+      <ThemedText style={{ fontSize: 22, fontWeight: "700" }}>{item.name}</ThemedText>
+      <ThemedText>{item.description}</ThemedText>
+      <ThemedText>{item.price} грн</ThemedText>
       <Button title="В избранное" onPress={() => toggleFavorite(item)}/>
-      <View style={{ height: 8 }} />
+      <ThemedView style={{ height: 8 }} />
       <Button title="В корзину" onPress={() => {addToCart(item, 1)}}/>
-    </View>
+    </ThemedView>
   );
 }

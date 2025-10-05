@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { View, Button, FlatList, TextInput } from "react-native";
+import { ThemedView, ThemedTextInput } from "../components/Themed";
+import { Button, FlatList } from "react-native";
 import ProductCard from "../components/ProductCard";
 import products from "../data/products";
 
@@ -12,9 +13,9 @@ export default function CatalogScreen({ navigation }) {
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <ThemedView style={{ flex: 1 }}>
       <Button title="Открыть браузер" onPress={() => navigation.navigate("Браузер")} />
-      <TextInput
+      <ThemedTextInput
         placeholder="Поиск"
         value={query}
         onChangeText={setQuery}
@@ -27,11 +28,11 @@ export default function CatalogScreen({ navigation }) {
           <ProductCard
             item={item}
             onPress={() => {
-              navigation.navigate("Product", { item });
+              navigation.navigate("Товар", { item });
             }}
           />
         )}
       />
-    </View>
+    </ThemedView>
   );
 }

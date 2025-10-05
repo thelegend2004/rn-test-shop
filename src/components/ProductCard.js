@@ -1,4 +1,5 @@
-import { TouchableOpacity, Text } from "react-native";
+import { ThemedText } from "./Themed";
+import { TouchableOpacity } from "react-native";
 
 export default function ProductCard({ item, onPress }) {
   return (
@@ -6,9 +7,9 @@ export default function ProductCard({ item, onPress }) {
       onPress={onPress}
       style={{ padding: 12, borderBottomWidth: 1 }}
     >
-      <Text style={{ fontWeight: "600" }}>{item.name}</Text>
-      <Text numberOfLines={2}>{item.description}</Text>
-      <Text style={{marginTop: 6}}>{item.price} грн</Text>
+      <ThemedText style={{ fontWeight: "600" }}>{item.name}</ThemedText>
+      <ThemedText numberOfLines={2}>{item.description}</ThemedText>
+      <ThemedText style={{marginTop: 6}}>{item.price} грн</ThemedText>
     </TouchableOpacity>
   );
 }
