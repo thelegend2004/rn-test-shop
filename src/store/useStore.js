@@ -12,7 +12,7 @@ const useStore = create((set, get) => ({
   cart: [],
   theme: "system",
 
-  toggleFavorites: (product) => {
+  toggleFavorite: (product) => {
     const fav = get().favorites.find((p) => p.id === product.id);
     const next = fav
       ? get().favorites.filter((p) => p.id !== product.id)

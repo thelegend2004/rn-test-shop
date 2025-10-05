@@ -10,6 +10,7 @@ import CatalogScreen from "./src/screens/CatalogScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProductScreen from "./src/screens/ProductScreen";
+import FavoritesScreen from "./src/screens/FavoritesScreen";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -18,6 +19,7 @@ function TabsNavigator() {
   return (
     <Tabs.Navigator>
       <Tabs.Screen name="Каталог" component={CatalogScreen} />
+      <Tabs.Screen name="Избранное" component={FavoritesScreen} />
     </Tabs.Navigator>
   );
 }
