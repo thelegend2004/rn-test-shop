@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, FlatList, TextInput } from "react-native";
+import { View, Button, FlatList, TextInput } from "react-native";
 import ProductCard from "../components/ProductCard";
 import products from "../data/products";
 
@@ -13,6 +13,7 @@ export default function CatalogScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
+      <Button title="Открыть браузер" onPress={() => navigation.navigate("Браузер")} />
       <TextInput
         placeholder="Поиск"
         value={query}

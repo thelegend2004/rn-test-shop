@@ -4,7 +4,7 @@ import {
   NavigationContainer,
 } from "@react-navigation/native";
 import { useEffect } from "react";
-import useStore from "./src/store/useStore"
+import useStore from "./src/store/useStore";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import CatalogScreen from "./src/screens/CatalogScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProductScreen from "./src/screens/ProductScreen";
 import FavoritesScreen from "./src/screens/FavoritesScreen";
 import CartScreen from "./src/screens/CartScreen";
+import BrowserScreen from "./src/screens/BrowserScreen";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -40,13 +41,15 @@ export default function App() {
       <NavigationContainer theme={navTheme}>
         <Stack.Navigator>
           <Stack.Screen
-            name="Home"
+            name="Домашняя страница"
             component={TabsNavigator}
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="Товар" component={ProductScreen} />
           <Stack.Screen
-            name="Product"
-            component={ProductScreen}
+            name="Браузер"
+            component={BrowserScreen}
+            options={{ presentation: "modal" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
