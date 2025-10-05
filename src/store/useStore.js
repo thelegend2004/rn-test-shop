@@ -21,6 +21,11 @@ const useStore = create((set, get) => ({
     AsyncStorage.setItem(STORAGE_KEYS.favorites, JSON.stringify(next));
   },
 
+  isInFavorite: (product) => {
+    const isThere = get().favorites.find(p => p.id === product.id);
+    return isThere;
+  },
+
   removeFavorite: (id) => {
     const next = get().favorites.filter((p) => p.id !== id);
     set({ favorites: next });

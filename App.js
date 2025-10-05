@@ -14,13 +14,33 @@ import FavoritesScreen from "./src/screens/FavoritesScreen";
 import CartScreen from "./src/screens/CartScreen";
 import BrowserScreen from "./src/screens/BrowserScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
+import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
 function TabsNavigator() {
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === "Каталог") {
+            iconName = focused ? "home" : "home-outline";
+          } else if (route.name === "Избранное") {
+            iconName = focused ? "heart" : "heart-outline";
+          } else if (route.name === "Корзина") {
+            iconName = focused ? "cart" : "cart-outline";
+          } else if (route.name === "Настройки") {
+            iconName = focused ? "settings" : "settings-outline";
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: "#3573f0ff",
+        tabBarInactiveBackgroundColor: "#79787f42",
+      })}
+    >
       <Tabs.Screen name="Каталог" component={CatalogScreen} />
       <Tabs.Screen name="Избранное" component={FavoritesScreen} />
       <Tabs.Screen name="Корзина" component={CartScreen} />
